@@ -12,7 +12,7 @@ Vue.prototype.$time = time
 Vue.use(new VueSocketIO({
   debug: false,
   // 服务器端地址
-  connection: '/deerRudolph',
+  connection: 'localhost/deerRudolph', // 打包時要把 "localhost/" 拿掉
 }))
 
 new Vue({
