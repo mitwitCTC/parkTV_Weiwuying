@@ -1,0 +1,7 @@
+node_modules
+
+/dist
+/dist_橫
+
+.DS_Store
+socket.js
