@@ -4,7 +4,6 @@ import router from './router'
 import vuetify from './plugins/vuetify';
 import time from '../tools/time';
 import VueSocketIO from 'vue-socket.io'
-import axios from 'axios';
 
 Vue.config.productionTip = false
 Vue.prototype.$time = time
