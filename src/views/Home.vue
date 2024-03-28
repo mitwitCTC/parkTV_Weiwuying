@@ -15,23 +15,8 @@
 
       </p>
     </div>
-    <!-- IMG -->
-    <div class="in_pic" v-if="infos.image">
-      <v-img :src="infos.image" width="100vw" aspect-ratio="2.4" position="center"></v-img>
-    </div>
-
-    <div class="in_pic" v-if="!infos.image">
-      <v-carousel class="mx-auto" cycle style="width:100vw" height="42vw" hide-delimiters :show-arrows="false">
-        <v-carousel-item v-for="(ad, i) in carouselImage" :key="i" :src="ad"></v-carousel-item>
-      </v-carousel>
-    </div>
-    <div class="in_pic mt-5" v-if="!infos.image">
-      <v-carousel class="mx-auto" cycle style="width:100vw" height="42vw" hide-delimiters :show-arrows="false">
-        <v-carousel-item v-for="(ad, i) in carouselImage2" :key="i" :src="ad"></v-carousel-item>
-      </v-carousel>
-    </div>
-    <!-- INFOS -->
-    <div class="text-center" style="width:100vw;">
+        <!-- INFOS -->
+        <div class="text-center" style="width:100vw;">
       <!-- TITLE -->
       <!-- <p v-if="!infos.plate" style="font-size:9vw ;margin-top: 15vw;">{{ infos.message }}</p> -->
 
@@ -45,6 +30,22 @@
         </div>
       </div>
     </div>
+    <!-- IMG -->
+    <div class="in_pic" v-if="infos.image">
+      <v-img :src="infos.image" width="100vw" aspect-ratio="2.4" position="center"></v-img>
+    </div>
+
+    <div class="in_pic" v-if="!infos.image && !infos.plate">
+      <v-carousel class="mx-auto" cycle style="width:100vw" height="42vw" hide-delimiters :show-arrows="false">
+        <v-carousel-item v-for="(ad, i) in carouselImage" :key="i" :src="ad"></v-carousel-item>
+      </v-carousel>
+    </div>
+    <div class="in_pic mt-5" v-if="!infos.image">
+      <v-carousel class="mx-auto" cycle style="width:100vw" height="42vw" hide-delimiters :show-arrows="false">
+        <v-carousel-item v-for="(ad, i) in carouselImage2" :key="i" :src="ad"></v-carousel-item>
+      </v-carousel>
+    </div>
+
 
   </div>
 </template>
@@ -63,7 +64,7 @@ export default {
         this.carouselImage = respone.carousel;
       }
       if (respone.carousel2) {
-        this.carouselImage = respone.carousel2;
+        this.carouselImage2 = respone.carousel2;
       }
       if (respone.welcome) {
         this.welcome = respone.welcome;
@@ -71,6 +72,8 @@ export default {
       }
       if (respone.logo) {
         this.logo = respone.logo;
+      }if (respone.seconds) {
+        this.seconds = parseInt(respone.seconds);
       }
     }
   },
@@ -94,6 +97,7 @@ export default {
       welcome: "歡迎光臨",
       carouselImage: [default_img],
       carouselImage2: [default_img],
+      seconds: "",
       infos: {
         message: "歡迎光臨",
         plate: null,
@@ -119,7 +123,7 @@ export default {
         this.infos["message"] = this.welcome;
         this.infos["plate"] = null;
         this.infos["image"] = null;
-      }, 6000);
+      }, this.seconds * 1000);
     },
   },
 };
