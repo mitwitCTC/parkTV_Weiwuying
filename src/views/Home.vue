@@ -144,7 +144,7 @@ export default {
         this.infos["message"] = this.welcome;
         this.infos["plate"] = null;
         this.infos["image"] = null;
-      }, this.seconds * 1000);
+      }, this.seconds ? this.seconds * 1000 : 10000 );
     },
   },
 };
