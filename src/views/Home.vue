@@ -32,16 +32,16 @@
     </div>
     <!-- IMG -->
     <div class="in_pic" v-if="infos.image">
-      <v-img :src="infos.image" width="100vw" aspect-ratio="2.4" position="center"></v-img>
+      <v-img :src="infos.image" width="100vw" aspect-ratio="2.4" style="position: absolute; bottom: 0; left: 0; width: 100vw; text-align: center;"></v-img>
     </div>
 
     <div class="in_pic" v-if="!infos.image">
-      <v-carousel class="mx-auto" cycle style="width:100vw" height="42vw" hide-delimiters :show-arrows="false">
+      <v-carousel class="mx-auto mt-5" cycle style="width:100vw" height="42vw" hide-delimiters :show-arrows="false">
         <v-carousel-item v-for="(ad, i) in carouselImage" :key="i" :src="ad"></v-carousel-item>
       </v-carousel>
     </div>
-    <div class="in_pic mt-5" v-if="!infos.image">
-      <v-carousel class="mx-auto" cycle style="width:100vw" height="42vw" hide-delimiters :show-arrows="false">
+    <div class="in_pic" v-if="!infos.image">
+      <v-carousel class="mx-auto" cycle style="position: absolute; bottom: 0; left: 0; width: 100vw; text-align: center;" height="42vw" hide-delimiters :show-arrows="false">
         <v-carousel-item v-for="(ad, i) in carouselImage2" :key="i" :src="ad"></v-carousel-item>
       </v-carousel>
     </div>
